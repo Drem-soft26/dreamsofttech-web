@@ -1,0 +1,9 @@
+ignoredBuiltDependencies:
+  - sharp
+  - unrs-resolver
+
+# Allow the Cloudflare Workers runtime (workerd) to run its install script.
+onlyBuiltDependencies:
+  - workerd
+  - esbuild
+
