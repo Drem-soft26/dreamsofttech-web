@@ -13,8 +13,8 @@ export type ContactChannel = {
 };
 
 export const siteConfig = {
-  name: "Your Company Name",
-  shortName: "Your Company",
+  name: "Dream Software Technology",
+  shortName: "dreamsofttech",
   tagline: "Lightweight desktop software for real business operations.",
   description:
     "We provide practical and easy-to-use desktop software solutions for hospitals, pharmacies, inventory, retail POS, billing and general business management.",
