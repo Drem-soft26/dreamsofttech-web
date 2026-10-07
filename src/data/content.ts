@@ -58,3 +58,46 @@ export const aboutSummary = [
   "We provide practical software solutions for businesses that need simple and reliable tools to manage their daily operations. Our focus is on lightweight desktop applications designed for real-world business requirements.",
   "We work with businesses that want clear records, faster everyday tasks and software that staff can start using without long training.",
 ];
+
+/** Editable company trust statistic — only use verified numbers. */
+export const trustStatistic = {
+  value: "220+",
+  label: "Clients & Users",
+  description:
+    "Businesses and organizations using our software solutions.",
+} as const;
+
+/** Editable trusted-by copy — no fake logos, names, or testimonials. */
+export const clientTrust = {
+  eyebrow: "Client Trust",
+  title: "Trusted by Businesses",
+  description:
+    "Helping businesses manage their daily operations with practical software solutions.",
+} as const;
+
+export const newClientSupport: ContentItem[] = [
+  { icon: "easy", title: "Software Guidance", description: "Get guidance about software features and how they can support your business operations." },
+  { icon: "install", title: "Installation Support", description: "Get assistance with software installation and initial setup." },
+  { icon: "tools", title: "Initial Setup Assistance", description: "Receive help with the initial configuration required for your business." },
+  { icon: "users", title: "User Guidance", description: "Get practical guidance to help users understand and operate the software." },
+  { icon: "support", title: "Technical Support", description: "Contact our team when you need assistance with software-related issues." },
+];
+
+/** Simple 3-step support process shown on the Client Support page. */
+export const supportProcess: ProcessStep[] = [
+  {
+    number: "01",
+    title: "Contact Us",
+    description: "Tell us about your software or support requirement.",
+  },
+  {
+    number: "02",
+    title: "Get Assistance",
+    description: "Our team provides the appropriate guidance.",
+  },
+  {
+    number: "03",
+    title: "Continue Using Your Software",
+    description: "Get the necessary support to use the software effectively.",
+  },
+];

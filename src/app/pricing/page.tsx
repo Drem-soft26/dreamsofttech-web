@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Icon } from "@/components/icons";
 import { Section, SectionHeading } from "@/components/Section";
@@ -7,6 +8,13 @@ import {
   type Software,
   type SoftwarePricing,
 } from "@/data/software";
+
+export const metadata: Metadata = {
+  title: "Software Pricing",
+  description:
+    "Explore our software solutions and choose the option that fits your business needs.",
+  alternates: { canonical: "/pricing" },
+};
 
 type PricedSoftware = Software & { pricing: SoftwarePricing };
 
@@ -31,9 +39,9 @@ function PricingCard({ software }: { software: PricedSoftware }) {
         </span>
       </div>
 
-      <h3 className="mt-4 text-lg font-semibold leading-6 text-ink">
+      <h2 className="mt-4 text-lg font-semibold leading-6 text-ink">
         {software.name}
-      </h3>
+      </h2>
       <p className="mt-2 text-sm leading-6 text-ink-muted">{software.tagline}</p>
 
       {/* Software price (not a subscription) */}
@@ -59,35 +67,55 @@ function PricingCard({ software }: { software: PricedSoftware }) {
         ))}
       </ul>
 
-      <div className="mt-6 pt-1">
-        <ButtonLink href="/contact" className="w-full">
-          Contact Us
-        </ButtonLink>
-      </div>
+      <div className="mt-6 flex-1 pt-1" />
+
+      <ButtonLink href="/contact" className="mt-auto w-full">
+        Contact Us
+      </ButtonLink>
     </article>
   );
 }
 
-export function Pricing() {
+export default function PricingPage() {
   return (
-    <Section id="software-pricing">
-      <SectionHeading
-        title="Software Pricing"
-        description="Choose the software solution that fits your business needs."
-        eyebrow="Pricing"
-      />
+    <>
+      <Section>
+        <SectionHeading
+          as="h1"
+          eyebrow="Pricing"
+          title="Software Pricing"
+          description="Explore our software solutions and choose the option that fits your business needs."
+        />
 
-      <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {pricedSoftware.map((software) => (
-          <PricingCard key={software.slug} software={software} />
-        ))}
-      </div>
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {pricedSoftware.map((software) => (
+            <PricingCard key={software.slug} software={software} />
+          ))}
+        </div>
 
-      <p className="mt-8 max-w-3xl text-sm leading-6 text-ink-muted">
-        Prices shown are software prices and may vary based on your
-        requirements. Contact us for full details, discounts and a software
-        demo.
-      </p>
-    </Section>
+        <p className="mt-8 max-w-3xl text-sm leading-6 text-ink-muted">
+          Prices shown are software prices and may vary based on your
+          requirements. Contact us for full details, discounts and a software
+          demo.
+        </p>
+      </Section>
+
+      <Section tone="muted">
+        <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl font-bold leading-tight tracking-tight text-ink sm:text-3xl">
+              Need help choosing the right software?
+            </h2>
+            <p className="mt-3 text-base leading-7 text-ink-muted">
+              Tell us about your business and we will guide you to the option
+              that fits your needs.
+            </p>
+          </div>
+          <ButtonLink href="/contact" className="shrink-0">
+            Contact Us
+          </ButtonLink>
+        </div>
+      </Section>
+    </>
   );
 }

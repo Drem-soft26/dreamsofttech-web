@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 /*
- * Design tokens — solid colours only.
- * No gradients, no glassmorphism: white/light surfaces, one solid accent.
+ * Global design system for a B2B software company.
+ * Solid colours only — no gradients, no glassmorphism, no backdrop blur,
+ * no decorative blobs or fake visual effects. Tailwind architecture unchanged.
  */
 @theme inline {
   --color-surface: #ffffff;
@@ -18,13 +19,164 @@
   --font-mono: var(--font-geist-mono);
 }
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Offset for the sticky 76px navbar plus breathing room. */
+    scroll-padding-top: 96px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-geist-sans), "Inter", ui-sans-serif, system-ui,
+      -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.65;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv11", "ss01";
+    overflow-x: clip;
+  }
+
+  /* Professional type hierarchy — comfortable line-heights, no heavy weights. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--color-ink);
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  h1 {
+    font-size: clamp(1.875rem, 1.35rem + 2.2vw, 2.875rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.125rem);
+    line-height: 1.22;
+    letter-spacing: -0.015em;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+    line-height: 1.32;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 1.0625rem;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+    font-weight: 600;
+  }
+
+  p {
+    line-height: 1.75;
+    text-wrap: pretty;
+    overflow-wrap: break-word;
+  }
+
+  /* Clean link defaults only for unstyled content links —
+     class-based nav/buttons/cards are untouched. */
+  a:where(:not([class])) {
+    color: var(--color-primary);
+    text-decoration: none;
+    text-underline-offset: 3px;
+    transition: color 150ms ease;
+  }
+
+  a:where(:not([class])):hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  /* Professional form focus states — solid ring, no glow tricks. */
+  input:where(:not([class])),
+  textarea:where(:not([class])),
+  select:where(:not([class])) {
+    display: block;
+    width: 100%;
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    border: 1px solid var(--color-line-strong);
+    border-radius: 0.5rem;
+    padding: 0.625rem 0.875rem;
+    line-height: 1.6;
+  }
+
+  input:where(:not([class]))::placeholder,
+  textarea:where(:not([class]))::placeholder {
+    color: var(--color-ink-muted);
+    opacity: 0.8;
+  }
+
+  input:where(:not([class])):focus,
+  textarea:where(:not([class])):focus,
+  select:where(:not([class])):focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-soft);
+  }
+
+  label:where(:not([class])) {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  img,
+  video,
+  svg {
+    max-width: 100%;
+  }
+
+  img,
+  video {
+    height: auto;
+  }
+
+  main {
+    display: block;
+  }
+
+  section[id] {
+    scroll-margin-top: 88px;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: #ffffff;
+  }
+
+  /* Clearly visible, accessible keyboard focus everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+    scroll-padding-top: 0;
   }
 
   *,
@@ -35,15 +187,3 @@ html {
   }
 }
 
-body {
-  background-color: var(--color-surface);
-  color: var(--color-ink);
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", sans-serif;
-  text-rendering: optimizeLegibility;
-}
-
-::selection {
-  background-color: var(--color-primary);
-  color: #ffffff;
-}

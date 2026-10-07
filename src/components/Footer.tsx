@@ -5,6 +5,8 @@ import { softwareList } from "@/data/software";
 const quickLinks = [
   { href: "/", label: "Home" },
   { href: "/software", label: "Software" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/client-support", label: "Client Support" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
 ];

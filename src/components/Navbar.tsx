@@ -5,31 +5,25 @@ import { usePathname } from "next/navigation";
 import { useId, useState } from "react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Icon } from "@/components/icons";
-import { navLinks, siteConfig } from "@/config/site";
+import { navLinks } from "@/config/site";
 import { cn } from "@/lib/cn";
 
-function Logo() {
-  const initials = siteConfig.name
-    .split(" ")
-    .map((word) => word.charAt(0))
-    .filter(Boolean)
-    .slice(0, 2)
-    .join("");
+function isActiveLink(pathname: string, href: string) {
+  if (href === "/") {
+    return pathname === "/";
+  }
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
+function Wordmark() {
   return (
     <Link
       href="/"
-      className="flex items-center gap-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-      aria-label={`${siteConfig.name} — home`}
+      className="shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+      aria-label="DreamSoft Tech — home"
     >
-      <span
-        aria-hidden="true"
-        className="grid h-9 w-9 place-items-center rounded-md bg-primary text-sm font-bold text-white"
-      >
-        {initials}
-      </span>
-      <span className="text-base font-bold leading-tight tracking-tight text-ink">
-        {siteConfig.name}
+      <span className="text-lg font-bold leading-none tracking-tight text-ink">
+        DreamSoft<span className="text-primary"> Tech</span>
       </span>
     </Link>
   );
@@ -43,28 +37,25 @@ export function Navbar() {
   const closeMenu = () => setOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-white shadow-[0_1px_3px_rgba(15,23,42,0.06)]">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
-        <Logo />
+    <header className="sticky top-0 z-50 border-b border-line bg-white">
+      <div className="mx-auto flex h-[76px] w-full max-w-6xl items-center justify-between gap-6 px-5 sm:px-8">
+        <Wordmark />
 
         {/* Desktop navigation */}
         <nav aria-label="Main" className="hidden lg:block">
-          <ul className="flex items-center gap-1">
+          <ul className="flex items-center gap-7">
             {navLinks.map((link) => {
-              const active =
-                link.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(link.href);
+              const active = isActiveLink(pathname, link.href);
               return (
                 <li key={link.href}>
                   <Link
                     href={link.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "rounded-md px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+                      "relative py-2 text-[14px] font-medium tracking-wide transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary",
                       active
-                        ? "bg-primary-soft text-primary"
-                        : "text-ink-muted hover:bg-surface-muted hover:text-ink",
+                        ? "text-primary after:absolute after:inset-x-0 after:-bottom-[21px] after:h-0.5 after:bg-primary after:content-['']"
+                        : "text-ink-muted hover:text-ink",
                     )}
                   >
                     {link.label}
@@ -75,8 +66,8 @@ export function Navbar() {
           </ul>
         </nav>
 
-        <div className="hidden lg:block">
-          <ButtonLink href="/contact" className="px-4 py-2.5">
+        <div className="hidden shrink-0 lg:block">
+          <ButtonLink href="/contact" className="rounded px-5 py-2.5 text-[14px]">
             Contact Us
           </ButtonLink>
         </div>
@@ -84,7 +75,7 @@ export function Navbar() {
         {/* Mobile menu toggle */}
         <button
           type="button"
-          className="grid h-10 w-10 place-items-center rounded-md border border-line text-ink transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary lg:hidden"
+          className="grid h-10 w-10 place-items-center rounded border border-line text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary lg:hidden"
           aria-expanded={open}
           aria-controls={menuId}
           aria-label={open ? "Close menu" : "Open menu"}
@@ -103,10 +94,9 @@ export function Navbar() {
           open ? "block" : "hidden",
         )}
       >
-        <ul className="mx-auto w-full max-w-6xl px-5 py-3 sm:px-8">
+        <ul className="mx-auto w-full max-w-6xl px-5 py-2 sm:px-8">
           {navLinks.map((link) => {
-            const active =
-              link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+            const active = isActiveLink(pathname, link.href);
             return (
               <li key={link.href} className="border-b border-line last:border-b-0">
                 <Link
@@ -114,7 +104,7 @@ export function Navbar() {
                   aria-current={active ? "page" : undefined}
                   onClick={closeMenu}
                   className={cn(
-                    "block py-3 text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+                    "block py-3 text-[15px] font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
                     active ? "text-primary" : "text-ink hover:text-primary",
                   )}
                 >
@@ -123,8 +113,8 @@ export function Navbar() {
               </li>
             );
           })}
-          <li className="pt-4 pb-2">
-            <ButtonLink href="/contact" className="w-full" onClick={closeMenu}>
+          <li className="pt-4 pb-3">
+            <ButtonLink href="/contact" className="w-full rounded" onClick={closeMenu}>
               Contact Us
             </ButtonLink>
           </li>
