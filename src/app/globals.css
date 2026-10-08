@@ -8,12 +8,12 @@
 @theme inline {
   --color-surface: #ffffff;
   --color-surface-muted: #f5f7fa;
-  --color-ink: #0f172a;
+  --color-ink: #080d17;
   --color-ink-muted: #475569;
   --color-line: #e2e8f0;
   --color-line-strong: #cbd5e1;
-  --color-primary: #1d4ed8;
-  --color-primary-dark: #1e40af;
+  --color-primary: #1dacd8;
+  --color-primary-dark: #1dacd8;
   --color-primary-soft: #eff6ff;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

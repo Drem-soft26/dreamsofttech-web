@@ -51,7 +51,7 @@ export default function ClientSupportPage() {
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
           <div className="max-w-2xl">
             <SectionHeading
-              title="New Client Support"
+              title="Client Support"
               description="New clients can contact us for software information, installation guidance and initial assistance."
             />
           </div>
