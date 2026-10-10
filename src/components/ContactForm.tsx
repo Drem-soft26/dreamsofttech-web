@@ -206,17 +206,7 @@ export function ContactForm() {
         </select>
       </Field>
 
-      <Field id="contact-message" label="Message" required>
-        <textarea
-          id="contact-message"
-          name="message"
-          required
-          rows={5}
-          className={fieldClassName}
-          value={values.message}
-          onChange={(event) => update("message", event.target.value)}
-        />
-      </Field>
+
 
       <div className="flex items-start gap-3">
         <input

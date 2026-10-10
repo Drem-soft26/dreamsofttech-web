@@ -46,11 +46,11 @@ function PricingCard({ software }: { software: PricedSoftware }) {
 
       {/* Software price (not a subscription) */}
       <div className="mt-5">
-        <PriceBlock pricing={software.pricing} />
+        {/* <PriceBlock pricing={software.pricing} /> */}
       </div>
 
       <div className="mt-4">
-        <DiscountBox pricing={software.pricing} />
+        {/* <DiscountBox pricing={software.pricing} /> */}
       </div>
 
       <ul className="mt-5 space-y-2.5 border-t border-line pt-5">
