@@ -2,8 +2,14 @@ import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Icon } from "@/components/icons";
 import { Section, SectionHeading } from "@/components/Section";
+import { TeamMemberCard } from "@/components/TeamMemberCard";
 import { aboutSummary } from "@/data/content";
 import { softwareList } from "@/data/software";
+import {
+  teamCategories,
+  getTeamMember,
+  type TeamMember,
+} from "@/data/team";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -81,6 +87,8 @@ export default function AboutPage() {
           </div>
         </div>
       </Section>
+
+
 
       <Section className="bg-primary">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">

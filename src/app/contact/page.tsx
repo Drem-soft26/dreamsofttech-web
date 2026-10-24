@@ -18,7 +18,7 @@ const channels: { key: keyof typeof contact; icon: IconName; channel: ContactCha
   { key: "email", icon: "email", channel: contact.email },
   { key: "address", icon: "address", channel: contact.address },
   { key: "whatsapp", icon: "chat", channel: contact.whatsapp },
-  { key: "messenger", icon: "chat", channel: contact.messenger },
+  // { key: "messenger", icon: "chat", channel: contact.messenger },
 ];
 
 export default function ContactPage() {

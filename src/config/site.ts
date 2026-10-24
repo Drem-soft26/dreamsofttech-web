@@ -29,11 +29,11 @@ export const siteConfig = {
       value: "01896036830",
       href: "https://wa.me/",
     },
-    messenger: {
-      label: "Messenger",
-      value: "[Messenger handle]",
-      href: "https://m.me/",
-    },
+    // messenger: {
+    //   label: "Messenger",
+    //   value: "[Messenger handle]",
+    //   href: "https://m.me/",
+    // },
   } satisfies Record<string, ContactChannel>,
 } as const;
 
@@ -43,5 +43,6 @@ export const navLinks = [
   { href: "/pricing", label: "Pricing" },
   { href: "/client-support", label: "Client Support" },
   { href: "/about", label: "About Us" },
+  { href: "/team", label: "Team" },
   { href: "/contact", label: "Contact" },
 ] as const;
