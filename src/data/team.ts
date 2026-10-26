@@ -65,7 +65,7 @@ export const teamMembers: Record<string, TeamMember> = {
   },
   marketingLead: {
     id: "marketingLead",
-    name: "[Marketing Lead Name]",
+    name: "Name: Md. Shahalam Khan",
     designation: "Marketing Lead",
     department: "Marketing Team",
     bio:
