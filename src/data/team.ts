@@ -43,9 +43,9 @@ export type TeamCategory = {
 
 export const teamMembers: Record<string, TeamMember> = {
   ceo: {
-    id: "ceo",
+    id: "ceo ",
     name: "Masum Khan",
-    designation: "Chief Development Lead",
+    designation: "Chief Development Lead ",
     department: "Development Lead",
     bio:
       "Leads company strategy, vision and day-to-day operations at DreamSoftTech. Oversees product direction, client partnerships and long-term growth.",
@@ -129,10 +129,10 @@ supportManager: {
 
 export const teamCategories: TeamCategory[] = [
   {
-    id: "ceo",
-    label: "CEO",
-    description: "Company leadership and executive direction.",
-    members: ["ceo"],
+  id: "ceo",
+  label: "Founder & CEO",
+  description: "Company leadership and executive direction.",
+  members: ["ceo"],
   },
   {
     id: "companyManager",

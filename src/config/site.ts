@@ -22,7 +22,7 @@ export const siteConfig = {
   url: "https://example.com",
   contact: {
     phone: { label: "Phone", value: "+880 1896036830", href: "tel:+8801896036830" },
-    email: { label: "Email", value: "dreamsoftechbd.com", href: "mailto:dreamsoftechbd.com" },
+    email: { label: "Email", value: "dreamsofttech.bd@gmail.com", href: "mailto:dreamsofttech.bd@gmail.com" },
     address: { label: "Office Address", value: "Tangail Medical College & Hospital Road, Sobalia Tangail -1900 Bangladesh" },
     whatsapp: {
       label: "WhatsApp",
