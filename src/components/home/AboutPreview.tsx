@@ -24,7 +24,7 @@ export function AboutPreview() {
 
         <div className="space-y-4 p-8 sm:p-10 lg:col-span-3">
           {aboutSummary.map((paragraph) => (
-            <p key={paragraph} className="text-base leading-7 text-ink-muted">
+            <p key={paragraph} className="text-base leading-7 text-primary">
               {paragraph}
             </p>
           ))}
